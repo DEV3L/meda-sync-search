@@ -16,9 +16,6 @@ class Prescription:
         self.is_high_cost = is_high_cost
 
     def __eq__(self, other):
-        if type(other) != type(self):
-            return False
-
         is_equal = self.description == other.description \
                    and self.national_drug_code == other.national_drug_code \
                    and self.cost_per_unit == other.cost_per_unit \

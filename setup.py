@@ -13,6 +13,7 @@ setup(
     install_requires=[
         'flask',
         'flask-runner',
+        'fuzzy',
         'gunicorn',
         # tests / ci
         'bandit',
