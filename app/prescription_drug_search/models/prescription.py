@@ -1,3 +1,6 @@
+from app.prescription_drug_search.transformers.str_transformer import StrTransformer
+
+
 class Prescription:
     def __init__(self, *,
                  description='',
@@ -8,6 +11,7 @@ class Prescription:
                  is_brand=False,
                  is_high_cost=False):
         self.description = description
+        self.fuzzy = StrTransformer(self.description).fuzzy
         self.national_drug_code = national_drug_code
         self.cost_per_unit = cost_per_unit
         self.pricing_unit = pricing_unit

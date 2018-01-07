@@ -8,7 +8,7 @@ def test_init_prescription():
 
 def test_init_prescription_with_keyword_args():
     prescription = Prescription(
-        description='',
+        description='apple',
         national_drug_code=0,
         cost_per_unit=0,
         pricing_unit='',
@@ -18,3 +18,4 @@ def test_init_prescription_with_keyword_args():
     )
 
     assert prescription
+    assert 'APL' == prescription.fuzzy
