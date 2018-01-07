@@ -1,0 +1,11 @@
+flask
+flask-runner
+gunicorn
+
+# non-functional, tests / ci
+bandit
+coverage
+coveralls
+pylint
+pytest
+tox
