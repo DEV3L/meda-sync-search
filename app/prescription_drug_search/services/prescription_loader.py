@@ -2,14 +2,16 @@ from csv import DictReader
 
 
 class PrescriptionLoader:
+    _prescriptions_data = None
+
     def __init__(self, data_file_path):
         self.data_file_path = data_file_path
-        self._prescriptions_data = None
+
 
     @property
     def prescriptions_data(self):
         if not self._prescriptions_data:
-            self._prescriptions_data = self._read()
+            PrescriptionLoader._prescriptions_data = self._read()
 
         return self._prescriptions_data
 

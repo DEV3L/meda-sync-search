@@ -1,3 +1,5 @@
+import json
+
 from app.prescription_drug_search.transformers.str_transformer import StrTransformer
 
 
@@ -29,3 +31,6 @@ class Prescription:
                    and self.is_high_cost == other.is_high_cost
 
         return is_equal
+
+    def serialize(self):
+        return json.dumps(self.__dict__)
