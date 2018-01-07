@@ -7,7 +7,6 @@ class PrescriptionLoader:
     def __init__(self, data_file_path):
         self.data_file_path = data_file_path
 
-
     @property
     def prescriptions_data(self):
         if not self._prescriptions_data:
