@@ -1,7 +1,14 @@
+from collections import OrderedDict
 from unittest.mock import patch
 
 from app.prescription_drug_search.services.prescription_loader import PrescriptionLoader
-from tests.prescription_drug_search.fixtures import expected_prescriptions_data
+
+expected_prescriptions_data = [
+    OrderedDict(
+        [('NDC Description', '12-HR DECONGEST 120 MG CAPLET'), ('NDC', '113005452'), ('NADAC_Per_Unit', ' $0.34 '),
+         ('Effective_Date', '5/17/17'), ('Pricing_Unit', 'EA'), ('OTC', 'Y'), ('Brand/Generic', 'G'),
+         ('As of Date', '6/7/17'), ('High Cost', 'Low')]),
+]
 
 
 def test_init_prescription_loader_service():
@@ -36,5 +43,3 @@ def test_prescriptions_data_property(mock_read):
     assert expected_prescriptions_data == prescription_loader.prescriptions_data
     assert expected_prescriptions_data == prescription_loader.prescriptions_data
     assert expected_mock_read_call_count == mock_read.call_count
-
-
