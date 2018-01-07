@@ -15,7 +15,11 @@ Python Flask App to Phonetically Search Prescription Drugs by Name on Heroku
     * sudo pip install --upgrade pip virtualenv virtualenvwrapper
 
 
-## Run
+# References
+* [Using Fuzzy Matching to Search by Sound with Python](http://www.informit.com/articles/article.aspx?p=1848528)
+
+
+# Run
 
 ```bash
 mkvirtualenv prescription-drug-search
@@ -26,7 +30,7 @@ python server.py runserver --port 5005
 ```
 
 
-## Contributing
+# Contributing
 
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-prescription-drug-search`
