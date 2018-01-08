@@ -21,7 +21,7 @@ def prescriptions():
 
     prescriptions_response = {
         '_search': search_str,
-        '_search_fuzzy': search.fuzzy_value,
+        '_search_fuzzy': search.value_fuzzy,
         'data': [prescription_data.__dict__ for prescription_data in _prescriptions]
     }
 
