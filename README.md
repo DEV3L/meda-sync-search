@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/DEV3L/prescription-drug-search.svg?branch=master)](https://travis-ci.org/DEV3L/prescription-drug-search)
-[![Coverage Status](https://coveralls.io/repos/github/DEV3L/prescription-drug-search/badge.svg)](https://coveralls.io/github/DEV3L/prescription-drug-search)
+[![Coverage Status](https://coveralls.io/repos/github/DEV3L/prescription-drug-search/badge.svg?branch=master)](https://coveralls.io/github/DEV3L/prescription-drug-search?branch=master)
 [![Code Climate](https://codeclimate.com/github/DEV3L/prescription-drug-search/badges/gpa.svg)](https://codeclimate.com/github/DEV3L/prescription-drug-search)
 
 
