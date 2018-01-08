@@ -3,6 +3,7 @@ import json
 
 from app.prescription_drug_search.transformers.str_transformer import StrTransformer
 
+
 class Prescription:
     def __init__(self, *,
                  description='',
@@ -21,6 +22,13 @@ class Prescription:
         self.is_brand = is_brand
         self.is_high_cost = is_high_cost
 
+    def serialize(self):
+        return self._json
+
+    @property
+    def _json(self):
+        return json.dumps(self.__dict__).encode()
+
     def __eq__(self, other):
         is_equal = self.description == other.description \
                    and self.national_drug_code == other.national_drug_code \
@@ -32,11 +40,8 @@ class Prescription:
 
         return is_equal
 
-    def serialize(self):
-        return json.dumps(self.__dict__)
-
     def __repr__(self):
-        return json.dumps(self.__dict__)
+        return self._json
 
     def __hash__(self):
-        return int(hashlib.sha1(json.dumps(self.__dict__).encode()).hexdigest(), 16)
+        return int(hashlib.sha1(self._json).hexdigest(), 16)
