@@ -18,6 +18,7 @@ class Search:
         _prescriptions = self._value_results
         _prescriptions.extend(self._value_fuzzy_results)
         _prescriptions = list(set(_prescriptions))
+        _prescriptions.sort(key=lambda prescription: prescription.description)
 
         self.prescriptions = _prescriptions
         return self.prescriptions
