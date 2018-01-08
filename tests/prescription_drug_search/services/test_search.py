@@ -37,7 +37,7 @@ def test_value_result_starts_with_when_one_character():
     assert expected_prescriptions == search._value_results
 
 
-def test_value_result_contains_when_multiple_character():
+def test_value_result_contains_when_multiple_characters():
     expected_prescription_first = Prescription(description='ABCD')
     expected_prescription_second = Prescription(description='BCDE')
     expected_prescriptions = [expected_prescription_first, expected_prescription_second]
@@ -50,3 +50,42 @@ def test_value_result_contains_when_multiple_character():
     search = Search('bc', prescriptions)
 
     assert expected_prescriptions == search._value_results
+
+
+def test_value_fuzzy_result():
+    expected_prescription_first = Prescription(description='ABECD')
+    expected_prescription_second = Prescription(description='ABICD')
+    expected_prescriptions = [expected_prescription_first, expected_prescription_second]
+
+    prescriptions = []
+    prescriptions.append(expected_prescription_first)
+    prescriptions.append(expected_prescription_second)
+    prescriptions.append(Prescription(description='DEFG'))
+
+    search = Search('abe', prescriptions)
+
+    assert expected_prescriptions == search._value_fuzzy_results
+
+
+def test_results():
+    expected_prescription_first = Prescription(description='ABECD')
+    expected_prescription_second = Prescription(description='ABICD')
+    expected_prescriptions = [expected_prescription_first, expected_prescription_second]
+
+    prescriptions = []
+    prescriptions.append(expected_prescription_first)
+    prescriptions.append(expected_prescription_second)
+    prescriptions.append(Prescription(description='DEFG'))
+
+    search = Search('abe', prescriptions)
+
+    assert expected_prescriptions == search.results
+
+
+def test_results_value_cached():
+    expected_prescriptions = 'cached value'
+
+    search = Search('test', [])
+    search.prescriptions = expected_prescriptions
+
+    assert expected_prescriptions == search.results

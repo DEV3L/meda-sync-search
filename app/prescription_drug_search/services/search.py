@@ -16,7 +16,7 @@ class Search:
             return self.prescriptions
 
         _prescriptions = self._value_results
-        _prescriptions.extend(self._fuzzy_results)
+        _prescriptions.extend(self._value_fuzzy_results)
         _prescriptions = list(set(_prescriptions))
 
         self.prescriptions = _prescriptions
@@ -30,7 +30,7 @@ class Search:
         return value_prescriptions
 
     @property
-    def _fuzzy_results(self):
-        fuzzy_prescriptions = [prescription for prescription in self._prescriptions
+    def _value_fuzzy_results(self):
+        value_fuzzy_prescriptions = [prescription for prescription in self._prescriptions
                                if prescription.fuzzy.startswith(self.value_fuzzy)]
-        return fuzzy_prescriptions
+        return value_fuzzy_prescriptions
