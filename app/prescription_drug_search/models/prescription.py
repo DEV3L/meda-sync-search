@@ -1,7 +1,7 @@
+import hashlib
 import json
 
 from app.prescription_drug_search.transformers.str_transformer import StrTransformer
-
 
 class Prescription:
     def __init__(self, *,
@@ -34,3 +34,9 @@ class Prescription:
 
     def serialize(self):
         return json.dumps(self.__dict__)
+
+    def __repr__(self):
+        return json.dumps(self.__dict__)
+
+    def __hash__(self):
+        return int(hashlib.sha1(json.dumps(self.__dict__).encode()).hexdigest(), 16)
