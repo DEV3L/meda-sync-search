@@ -25,8 +25,9 @@ Python Flask App to Phonetically Search Prescription Drugs by Name on Heroku
 mkvirtualenv prescription-drug-search
 python setup.py develop
 
-python server.py runserver --port 5006
-python server.py runserver --port 5005
+python server.py runserver --port 5000
+# OR
+gunicorn -b 0.0.0.0:5000 server:app --log-file=- -R
 ```
 
 

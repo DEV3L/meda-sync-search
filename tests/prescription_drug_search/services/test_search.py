@@ -67,6 +67,15 @@ def test_value_fuzzy_result():
     assert expected_prescriptions == search._value_fuzzy_results
 
 
+def test_value_fuzzy_result_none_fuzzy():
+    expected_prescriptions = []
+    prescriptions = [Prescription(description='D')]
+
+    search = Search('D', prescriptions)
+    search.value_fuzzy = None
+
+    assert expected_prescriptions == search._value_fuzzy_results
+
 def test_results():
     expected_prescription_first = Prescription(description='ABECD')
     expected_prescription_second = Prescription(description='ABICD')

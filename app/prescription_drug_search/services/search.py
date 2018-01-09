@@ -32,6 +32,10 @@ class Search:
 
     @property
     def _value_fuzzy_results(self):
+        if not self.value_fuzzy:
+            return []
+
         value_fuzzy_prescriptions = [prescription for prescription in self._prescriptions
                                if prescription.fuzzy.startswith(self.value_fuzzy)]
+
         return value_fuzzy_prescriptions
