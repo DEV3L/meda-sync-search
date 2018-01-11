@@ -76,26 +76,12 @@
                placeholder="Description" autofocus value="{{ _search }}">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
     </form>
+    <p class="text-muted text-center">Pricing reflects National Average Drug Acquisition Cost (NADAC) from CMS.</p>
 </div>
 
 <hr/>
 
 <div class="container" style="font-size: 11pt">
-    <div class="container">
-        <div class="row">
-            {% if _search %}
-                <div class="col">
-                    <p><span class="font-weight-bold">Search</span>: {{ _search }}</p>
-                </div>
-            {% endif %}
-            {% if _search_fuzzy %}
-                <div class="col">
-                    <p><span class="font-weight-bold">Search Fuzzy Value</span>: {{ _search_fuzzy }}</p>
-                </div>
-            {% endif %}
-        </div>
-    </div>
-
     <h2>Prescriptions</h2>
     <div class="row">
         <div class="col">
