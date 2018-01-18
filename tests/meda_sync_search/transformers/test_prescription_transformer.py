@@ -11,7 +11,7 @@ def test_prescription_transformer_init():
     prescription_data_transformer = PrescriptionDataTransformer(expected_prescription_data)
 
     assert prescription_data_transformer
-    assert expected_prescription_data == prescription_data_transformer.prescription_data
+    assert expected_prescription_data == prescription_data_transformer.data
 
 
 prescription_data_one = OrderedDict(

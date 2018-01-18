@@ -1,10 +1,8 @@
 from app.meda_sync_search.models.prescription import Prescription
+from app.meda_sync_search.transformers.data_transformer import DataTransformer
 
 
-class PrescriptionDataTransformer:
-    def __init__(self, prescription_data):
-        self.prescription_data = prescription_data
-
+class PrescriptionDataTransformer(DataTransformer):
     def transform(self):
         description = self._get_value('NDC Description')
         national_drug_code = int(self._get_value('NDC'))
@@ -18,7 +16,7 @@ class PrescriptionDataTransformer:
                                         is_over_the_counter, is_brand, is_high_cost)
 
     def _get_value(self, key):
-        return self.prescription_data[key].strip()
+        return self.data[key].strip()
 
     def _build_prescription(self, description, national_drug_code, cost_per_unit, pricing_unit,
                             is_over_the_counter, is_brand, is_high_cost):
