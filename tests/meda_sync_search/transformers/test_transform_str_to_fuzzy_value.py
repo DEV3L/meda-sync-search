@@ -1,6 +1,6 @@
 from pytest import mark
 
-from app.prescription_drug_search.transformers.str_transformer import StrTransformer
+from app.meda_sync_search.transformers.str_transformer import StrTransformer
 
 
 def test_str_transformer_init():

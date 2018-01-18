@@ -1,4 +1,4 @@
-from app.prescription_drug_search.models.prescription import Prescription
+from app.meda_sync_search.models.prescription import Prescription
 
 
 class PrescriptionDataTransformer:

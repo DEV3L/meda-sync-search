@@ -1,14 +1,14 @@
 {
-  "name": "Prescription Drug Search",
-  "description": "Python Flask App to Phonetically Search Prescription Drugs by Name on Heroku",
+  "name": "Meda Sync Search",
+  "description": "Python Flask App to Phonetically Search Prescription Drugs and Equipment by Name on Heroku",
   "image": "heroku/python",
-  "repository": "https://github.com/DEV3L/prescription-drug-search",
+  "repository": "https://github.com/DEV3L/meda-sync-search",
   "keywords": [
     "python",
     "flask",
     "prescription",
     "phonetic",
-    "search",
+    "search"
   ],
   "addons": [
     ""

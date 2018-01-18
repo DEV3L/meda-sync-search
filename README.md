@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/DEV3L/prescription-drug-search.svg?branch=master)](https://travis-ci.org/DEV3L/prescription-drug-search)
-[![Coverage Status](https://coveralls.io/repos/github/DEV3L/prescription-drug-search/badge.svg?branch=master)](https://coveralls.io/github/DEV3L/prescription-drug-search?branch=master)
-[![Code Climate](https://codeclimate.com/github/DEV3L/prescription-drug-search/badges/gpa.svg)](https://codeclimate.com/github/DEV3L/prescription-drug-search)
+[![Build Status](https://travis-ci.org/DEV3L/meda-sync-search.svg?branch=master)](https://travis-ci.org/DEV3L/meda-sync-search)
+[![Coverage Status](https://coveralls.io/repos/github/DEV3L/meda-sync-search/badge.svg?branch=master)](https://coveralls.io/github/DEV3L/meda-sync-search?branch=master)
+[![Code Climate](https://codeclimate.com/github/DEV3L/meda-sync-search/badges/gpa.svg)](https://codeclimate.com/github/DEV3L/meda-sync-search)
 
 
-# prescription-drug-search
+# meda-sync-search
 Python Flask App to Phonetically Search Prescription Drugs by Name on Heroku
 
 
@@ -22,7 +22,7 @@ Python Flask App to Phonetically Search Prescription Drugs by Name on Heroku
 # Run
 
 ```bash
-mkvirtualenv prescription-drug-search
+mkvirtualenv meda-sync-search
 python setup.py develop
 
 python server.py runserver --port 5000
@@ -34,7 +34,7 @@ gunicorn -b 0.0.0.0:5000 server:app --log-file=- -R
 # Contributing
 
 1. Fork it!
-2. Create your feature branch: `git checkout -b my-prescription-drug-search`
+2. Create your feature branch: `git checkout -b my-meda-sync-search`
 3. Commit your changes: `git commit -am 'Add something'`
-4. Push to the branch: `git push origin my-prescription-drug-search`
+4. Push to the branch: `git push origin my-meda-sync-search`
 5. Submit a pull request :D

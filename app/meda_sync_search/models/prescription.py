@@ -1,7 +1,7 @@
 import hashlib
 import json
 
-from app.prescription_drug_search.transformers.str_transformer import StrTransformer
+from app.meda_sync_search.transformers.str_transformer import StrTransformer
 
 
 class Prescription:

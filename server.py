@@ -2,13 +2,13 @@ from flask import Flask, jsonify, request
 from flask import render_template
 from flask_script import Manager
 
-from app.prescription_drug_search.services.prescription_loader import PrescriptionLoader
-from app.prescription_drug_search.services.search import Search
+from app.meda_sync_search.services.prescription_loader import PrescriptionLoader
+from app.meda_sync_search.services.search import Search
 
 prescription_data_file_path = './data/prescription_data.csv'
 app = Flask(__name__)
-manager = Manager(app)
 
+manager = Manager(app)
 
 @app.route('/prescriptions')
 def prescriptions():
@@ -20,7 +20,6 @@ def prescriptions():
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     return _search('search')
-
 
 @app.route('/search_description', methods=['GET', 'POST'])
 def search_description():

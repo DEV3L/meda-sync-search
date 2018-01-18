@@ -2,8 +2,8 @@ from collections import OrderedDict
 
 from pytest import mark
 
-from app.prescription_drug_search.models.prescription import Prescription
-from app.prescription_drug_search.transformers.prescription_data_transformer import PrescriptionDataTransformer
+from app.meda_sync_search.models.prescription import Prescription
+from app.meda_sync_search.transformers.prescription_data_transformer import PrescriptionDataTransformer
 
 
 def test_prescription_transformer_init():

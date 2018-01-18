@@ -1,8 +1,8 @@
 from collections import OrderedDict
 from unittest.mock import patch
 
-from app.prescription_drug_search.models.prescription import Prescription
-from app.prescription_drug_search.services.prescription_loader import PrescriptionLoader
+from app.meda_sync_search.models.prescription import Prescription
+from app.meda_sync_search.services.prescription_loader import PrescriptionLoader
 
 expected_prescriptions_data = [
     OrderedDict(
@@ -29,7 +29,7 @@ def test_init_prescription_loader_service():
     assert expected_data_file_path == prescription_loader.data_file_path
 
 
-@patch('app.prescription_drug_search.services.prescription_loader.DictReader')
+@patch('app.meda_sync_search.services.prescription_loader.DictReader')
 @patch('builtins.open')
 def test_read(mock_open, mock_dict_reader):
     mock_open_context = mock_open.return_value.__enter__.return_value
@@ -43,7 +43,7 @@ def test_read(mock_open, mock_dict_reader):
     assert expected_prescriptions_data == prescriptions_data
 
 
-@patch('app.prescription_drug_search.services.prescription_loader.PrescriptionLoader._read')
+@patch('app.meda_sync_search.services.prescription_loader.PrescriptionLoader._read')
 def test_prescriptions_data_property(mock_read):
     expected_mock_read_call_count = 1
     mock_read.return_value = expected_prescriptions_data
@@ -67,7 +67,7 @@ def test_prescriptions():
     assert expected_prescriptions_list == prescriptions_list
 
 
-@patch('app.prescription_drug_search.services.prescription_loader.PrescriptionsDataTransformer')
+@patch('app.meda_sync_search.services.prescription_loader.PrescriptionsDataTransformer')
 def test_prescriptions_cache(mock_prescriptions_data_transformer):
     PrescriptionLoader._list = None
     expected_call_count = 1

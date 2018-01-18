@@ -1,4 +1,4 @@
-from app.prescription_drug_search.transformers.prescription_data_transformer import PrescriptionDataTransformer
+from app.meda_sync_search.transformers.prescription_data_transformer import PrescriptionDataTransformer
 
 
 class PrescriptionsDataTransformer:

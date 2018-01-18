@@ -1,5 +1,5 @@
-from app.prescription_drug_search.models.prescription import Prescription
-from app.prescription_drug_search.services.search import Search
+from app.meda_sync_search.models.prescription import Prescription
+from app.meda_sync_search.services.search import Search
 
 
 def test_search_init():

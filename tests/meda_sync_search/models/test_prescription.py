@@ -1,6 +1,6 @@
 import hashlib
 
-from app.prescription_drug_search.models.prescription import Prescription
+from app.meda_sync_search.models.prescription import Prescription
 
 expected_serialize_str = b'{"description": "", "fuzzy": "", ' \
                          b'"national_drug_code": 0, "cost_per_unit": 0, ' \

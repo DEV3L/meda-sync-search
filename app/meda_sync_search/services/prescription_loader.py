@@ -1,6 +1,6 @@
 from csv import DictReader
 
-from app.prescription_drug_search.transformers.prescriptions_data_transformer import PrescriptionsDataTransformer
+from app.meda_sync_search.transformers.prescriptions_data_transformer import PrescriptionsDataTransformer
 
 
 class PrescriptionLoader:
