@@ -1,10 +1,7 @@
-import hashlib
-import json
-
-from app.meda_sync_search.transformers.str_transformer import StrTransformer
+from app.meda_sync_search.models.model import Model
 
 
-class Prescription:
+class Prescription(Model):
     def __init__(self, *,
                  description='',
                  national_drug_code=0,
@@ -13,21 +10,14 @@ class Prescription:
                  is_over_the_counter=False,
                  is_brand=False,
                  is_high_cost=False):
-        self.description = description
-        self.fuzzy = StrTransformer(self.description).fuzzy
+        super().__init__(description=description)
+
         self.national_drug_code = national_drug_code
         self.cost_per_unit = cost_per_unit
         self.pricing_unit = pricing_unit
         self.is_over_the_counter = is_over_the_counter
         self.is_brand = is_brand
         self.is_high_cost = is_high_cost
-
-    def serialize(self):
-        return self._json
-
-    @property
-    def _json(self):
-        return json.dumps(self.__dict__).encode()
 
     def __eq__(self, other):
         is_equal = self.description == other.description \
@@ -40,8 +30,5 @@ class Prescription:
 
         return is_equal
 
-    def __repr__(self):
-        return self._json
-
     def __hash__(self):
-        return int(hashlib.sha1(self._json).hexdigest(), 16)
+        return super().__hash__()
