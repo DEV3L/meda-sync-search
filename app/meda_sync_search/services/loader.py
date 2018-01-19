@@ -16,8 +16,8 @@ class Loader:
         return self._data
 
     @data.setter
-    def data(self, prescriptions_data):
-        self._data = prescriptions_data
+    def data(self, data):
+        self._data = data
 
     def _read(self):
         with open(self.data_file_path, 'r') as csvfile:
