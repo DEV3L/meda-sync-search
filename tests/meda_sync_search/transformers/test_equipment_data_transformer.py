@@ -14,7 +14,6 @@ def test_equipment_transformer_init():
     assert expected_equipment_data == equipment_data_transformer.data
 
 
-""",Modifier,Average Cost"""
 equipment_data_one = OrderedDict(
     [('HCPCS', 'hcpcs'), ('Description', 'description'), ('Category', 'category'),
      ('Average Cost', ' $0.43 '), ('Modifier', 'modifier')])
@@ -28,8 +27,11 @@ expected_equipment_one = Equipment(
 )
 
 equipment_data_two = OrderedDict(
-    [('HCPCS', 'hcpcs2'), ('Description', 'description2'), ('Category', 'category2'),
-     ('Average Cost', ' $1.43 '), ('Modifier', 'modifier2')])
+    [('HCPCS', 'hcpcs2'),
+     ('Description', 'description2'),
+     ('Category', 'category2'),
+     ('Average Cost', ' $1.43 '),
+     ('Modifier', 'modifier2')])
 
 expected_equipment_two = Equipment(
     description='description2',
