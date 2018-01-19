@@ -38,3 +38,10 @@ def test_read(mock_open, mock_dict_reader):
 
     mock_dict_reader.assert_called_with(mock_open_context)
     assert expected_equipments_data == equipments_data
+
+
+def test_data_setter():
+    loader = Loader('')
+    loader.data = 'test'
+
+    assert 'test' == loader._data
