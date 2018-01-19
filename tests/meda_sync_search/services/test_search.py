@@ -10,8 +10,8 @@ def test_search_init():
     assert '' == search.value
     assert '' == search.value_fuzzy
 
-    assert [] == search._prescriptions
-    assert [] == search.prescriptions
+    assert [] == search._items
+    assert [] == search.items
 
     search = Search('Value', [])
 
@@ -20,81 +20,81 @@ def test_search_init():
     assert 'value' == search.value
     assert 'VAL' == search.value_fuzzy
 
-    assert [] == search._prescriptions
-    assert None == search.prescriptions
+    assert [] == search._items
+    assert None == search.items
 
 
 def test_value_result_starts_with_when_one_character():
-    expected_prescription = Prescription(description='A')
-    expected_prescriptions = [expected_prescription]
+    expected_item = Prescription(description='A')
+    expected_items = [expected_item]
 
-    prescriptions = []
-    prescriptions.append(expected_prescription)
-    prescriptions.append(Prescription(description='bA'))
+    items = []
+    items.append(expected_item)
+    items.append(Prescription(description='bA'))
 
-    search = Search('a', prescriptions)
+    search = Search('a', items)
 
-    assert expected_prescriptions == search._value_results
+    assert expected_items == search._value_results
 
 
 def test_value_result_contains_when_multiple_characters():
-    expected_prescription_first = Prescription(description='ABCD')
-    expected_prescription_second = Prescription(description='BCDE')
-    expected_prescriptions = [expected_prescription_first, expected_prescription_second]
+    expected_item_first = Prescription(description='ABCD')
+    expected_item_second = Prescription(description='BCDE')
+    expected_items = [expected_item_first, expected_item_second]
 
-    prescriptions = []
-    prescriptions.append(expected_prescription_first)
-    prescriptions.append(expected_prescription_second)
-    prescriptions.append(Prescription(description='DEFG'))
+    items = []
+    items.append(expected_item_first)
+    items.append(expected_item_second)
+    items.append(Prescription(description='DEFG'))
 
-    search = Search('bc', prescriptions)
+    search = Search('bc', items)
 
-    assert expected_prescriptions == search._value_results
+    assert expected_items == search._value_results
 
 
 def test_value_fuzzy_result():
-    expected_prescription_first = Prescription(description='ABECD')
-    expected_prescription_second = Prescription(description='ABICD')
-    expected_prescriptions = [expected_prescription_first, expected_prescription_second]
+    expected_item_first = Prescription(description='ABECD')
+    expected_item_second = Prescription(description='ABICD')
+    expected_items = [expected_item_first, expected_item_second]
 
-    prescriptions = []
-    prescriptions.append(expected_prescription_first)
-    prescriptions.append(expected_prescription_second)
-    prescriptions.append(Prescription(description='DEFG'))
+    items = []
+    items.append(expected_item_first)
+    items.append(expected_item_second)
+    items.append(Prescription(description='DEFG'))
 
-    search = Search('abe', prescriptions)
+    search = Search('abe', items)
 
-    assert expected_prescriptions == search._value_fuzzy_results
+    assert expected_items == search._value_fuzzy_results
 
 
 def test_value_fuzzy_result_none_fuzzy():
-    expected_prescriptions = []
-    prescriptions = [Prescription(description='D')]
+    expected_items = []
+    items = [Prescription(description='D')]
 
-    search = Search('D', prescriptions)
+    search = Search('D', items)
     search.value_fuzzy = None
 
-    assert expected_prescriptions == search._value_fuzzy_results
+    assert expected_items == search._value_fuzzy_results
 
 def test_results():
-    expected_prescription_first = Prescription(description='ABECD')
-    expected_prescription_second = Prescription(description='ABICD')
-    expected_prescriptions = [expected_prescription_first, expected_prescription_second]
+    expected_item_first = Prescription(description='ABECD')
+    expected_item_second = Prescription(description='ABICD')
+    expected_items = [expected_item_first, expected_item_second]
 
-    prescriptions = []
-    prescriptions.append(expected_prescription_first)
-    prescriptions.append(expected_prescription_second)
-    prescriptions.append(Prescription(description='DEFG'))
+    items = []
+    items.append(expected_item_first)
+    items.append(expected_item_second)
+    items.append(Prescription(description='DEFG'))
 
-    search = Search('abe', prescriptions)
+    search = Search('abe', items)
 
-    assert expected_prescriptions == search.results
+    assert expected_items == search.results
 
 
 def test_results_value_cached():
-    expected_prescriptions = 'cached value'
+    expected_items = 'cached value'
 
     search = Search('test', [])
-    search.prescriptions = expected_prescriptions
+    search.items = expected_items
 
-    assert expected_prescriptions == search.results
+    assert expected_items == search.results
