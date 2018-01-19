@@ -1,15 +1,8 @@
-from csv import DictReader
-
+from app.meda_sync_search.services.loader import Loader
 from app.meda_sync_search.transformers.prescriptions_data_transformer import PrescriptionsDataTransformer
 
 
-class PrescriptionLoader:
-    _prescriptions_data = None
-    _list = None
-
-    def __init__(self, data_file_path):
-        self.data_file_path = data_file_path
-
+class PrescriptionLoader(Loader):
     @property
     def prescriptions(self):
         if not PrescriptionLoader._list:
@@ -22,16 +15,11 @@ class PrescriptionLoader:
 
     @property
     def prescriptions_data(self):
-        if not self._prescriptions_data:
-            PrescriptionLoader._prescriptions_data = self._read()
+        if not self._data:
+            PrescriptionLoader._data = self._read()
 
-        return self._prescriptions_data
+        return self._data
 
     @prescriptions_data.setter
     def prescriptions_data(self, prescriptions_data):
-        self._prescriptions_data = prescriptions_data
-
-    def _read(self):
-        with open(self.data_file_path, 'r') as csvfile:
-            prescriptions_data = DictReader(csvfile)
-            return [prescription_data for prescription_data in prescriptions_data]
+        self._data = prescriptions_data

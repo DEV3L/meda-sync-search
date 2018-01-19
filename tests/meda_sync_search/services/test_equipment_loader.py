@@ -26,19 +26,6 @@ def test_init_equipment_loader_service():
     assert expected_data_file_path == equipment_loader.data_file_path
 
 
-@patch('app.meda_sync_search.services.equipment_loader.DictReader')
-@patch('builtins.open')
-def test_read(mock_open, mock_dict_reader):
-    mock_open_context = mock_open.return_value.__enter__.return_value
-    mock_dict_reader.return_value = expected_equipments_data
-
-    equipment_loader = EquipmentLoader('')
-
-    equipments_data = equipment_loader._read()
-
-    mock_dict_reader.assert_called_with(mock_open_context)
-    assert expected_equipments_data == equipments_data
-
 
 @patch('app.meda_sync_search.services.equipment_loader.EquipmentLoader._read')
 def test_equipments_data_property(mock_read):
