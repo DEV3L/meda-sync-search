@@ -5,21 +5,10 @@ from app.meda_sync_search.transformers.equipments_data_transformer import Equipm
 class EquipmentLoader(Loader):
 
     @property
-    def equipments(self):
+    def list(self):
         if not EquipmentLoader._list:
-            equipments_data_transformer = EquipmentsDataTransformer(self.equipments_data)
+            equipments_data_transformer = EquipmentsDataTransformer(self.data)
             equipments = equipments_data_transformer.transform()
             EquipmentLoader._list = equipments
 
         return EquipmentLoader._list
-
-    @property
-    def equipments_data(self):
-        if not self._data:
-            EquipmentLoader._data = self._read()
-
-        return self._data
-
-    @equipments_data.setter
-    def equipments_data(self, equipments_data):
-        self._data = equipments_data

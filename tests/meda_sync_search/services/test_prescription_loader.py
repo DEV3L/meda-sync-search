@@ -36,8 +36,8 @@ def test_prescriptions_data_property(mock_read):
 
     prescription_loader = PrescriptionLoader('')
 
-    assert expected_prescriptions_data == prescription_loader.prescriptions_data
-    assert expected_prescriptions_data == prescription_loader.prescriptions_data
+    assert expected_prescriptions_data == prescription_loader.data
+    assert expected_prescriptions_data == prescription_loader.data
     assert expected_mock_read_call_count == mock_read.call_count
 
 
@@ -48,7 +48,7 @@ def test_prescriptions():
     prescription_loader = PrescriptionLoader('')
     prescription_loader.prescriptions_data = expected_prescriptions_data
 
-    prescriptions_list = prescription_loader.prescriptions
+    prescriptions_list = prescription_loader.list
 
     assert expected_prescriptions_list == prescriptions_list
 
@@ -59,7 +59,7 @@ def test_prescriptions_cache(mock_prescriptions_data_transformer):
     expected_call_count = 1
 
     prescription_loader = PrescriptionLoader('')
-    _ = prescription_loader.prescriptions
-    _ = prescription_loader.prescriptions
+    _ = prescription_loader.list
+    _ = prescription_loader.list
 
     assert expected_call_count == mock_prescriptions_data_transformer.call_count

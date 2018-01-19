@@ -34,8 +34,8 @@ def test_equipments_data_property(mock_read):
 
     equipment_loader = EquipmentLoader('')
 
-    assert expected_equipments_data == equipment_loader.equipments_data
-    assert expected_equipments_data == equipment_loader.equipments_data
+    assert expected_equipments_data == equipment_loader.data
+    assert expected_equipments_data == equipment_loader.data
     assert expected_mock_read_call_count == mock_read.call_count
 
 
@@ -46,7 +46,7 @@ def test_equipments():
     equipment_loader = EquipmentLoader('')
     equipment_loader.equipments_data = expected_equipments_data
 
-    equipments_list = equipment_loader.equipments
+    equipments_list = equipment_loader.list
 
     assert expected_equipments_list == equipments_list
 
@@ -57,7 +57,7 @@ def test_equipments_cache(mock_equipments_data_transformer):
     expected_call_count = 1
 
     equipment_loader = EquipmentLoader('')
-    _ = equipment_loader.equipments
-    _ = equipment_loader.equipments
+    _ = equipment_loader.list
+    _ = equipment_loader.list
 
     assert expected_call_count == mock_equipments_data_transformer.call_count
