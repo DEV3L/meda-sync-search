@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>search DME costs</title>
+    <title>Search DMEPOS</title>
 
     <!-- Bootstrap4 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
@@ -70,22 +70,24 @@
 <body>
 <div class="container-fluid">
     <form class="form-signin" action="{{ url_for(form_name  ) }}" method="post">
-        <h2 class="form-signin-heading">search DME costs</h2>
+        <h2 class="form-signin-heading">Search DMEPOS</h2>
         <label for="inputEmail" class="sr-only">Description</label>
         <input type="text" name="search" id="search" class="form-control"
                placeholder="Description" autofocus value="{{ _search }}">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
     </form>
+    <p class="text-muted text-center">Pricing reflects Durable Medical Equipment, Prosthetics, Orthotics and Supplies
+        fee schedule from CMS.</p>
 </div>
 
 <hr/>
 
 <div class="container" style="font-size: 11pt">
-    <h2>DME</h2>
+    <h2>DMEPOS</h2>
     <div class="row">
         <div class="col">
             <table class="table table-sm table-bordered" style="background: #FFF;">
-                <caption>DME</caption>
+                <caption>DMEPOS</caption>
                 <tr title="Fuzzy">
                     <th>Description</th>
                     <th>HCPCS</th>
