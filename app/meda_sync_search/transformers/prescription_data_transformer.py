@@ -6,7 +6,7 @@ class PrescriptionDataTransformer(DataTransformer):
     def transform(self):
         description = self._get_value('NDC Description')
         national_drug_code = int(self._get_value('NDC'))
-        cost_per_unit = float(self._get_value('NADAC_Per_Unit').replace('$', '').replace(',', ''))
+        cost_per_unit = self._get_float('NADAC_Per_Unit')
         pricing_unit = self._get_value('Pricing_Unit')
         is_over_the_counter = 'Y' == self._get_value('OTC')
         is_brand = 'G' != self._get_value('Brand/Generic')

@@ -8,8 +8,7 @@ class EquipmentDataTransformer(DataTransformer):
         hcpcs = self._get_value('HCPCS')
         category = self._get_value('Category')
         modifier = self._get_value('Modifier')
-
-        average_cost = float(self._get_value('Average Cost').replace('$', '').replace(',', ''))
+        average_cost = self._get_float('Average Cost')
 
         return self._build_equipment(description, hcpcs, category, modifier, average_cost)
 
