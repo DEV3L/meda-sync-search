@@ -1,3 +1,5 @@
+from pytest import mark
+
 from app.meda_sync_search.models.prescription import Prescription
 from app.meda_sync_search.services.search import Search
 
@@ -76,17 +78,19 @@ def test_value_fuzzy_result_none_fuzzy():
 
     assert expected_items == search._value_fuzzy_results
 
-def test_results():
-    expected_item_first = Prescription(description='ABECD')
-    expected_item_second = Prescription(description='ABICD')
-    expected_items = [expected_item_first, expected_item_second]
 
-    items = []
-    items.append(expected_item_first)
-    items.append(expected_item_second)
-    items.append(Prescription(description='DEFG'))
+@mark.parametrize("expected_items, descriptions, search_value",
+                  [
+                      (['ABECD', 'ABICD'], ['ABECD', 'ABICD', 'DEFG'], 'abe'),
+                      (['DEFG'], ['ABECD', 'ABICD', 'DEFG'], 'd'),
+                      (['Negative Something', 'Something'],
+                       ['Negative Something', 'Something', 'DEFG'], 'neg some')
+                  ])
+def test_results(expected_items, descriptions, search_value):
+    expected_items = [Prescription(description=description) for description in expected_items]
+    items = [Prescription(description=description) for description in descriptions]
 
-    search = Search('abe', items)
+    search = Search(search_value, items)
 
     assert expected_items == search.results
 

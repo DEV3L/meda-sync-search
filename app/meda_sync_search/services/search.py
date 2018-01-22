@@ -5,7 +5,7 @@ class Search:
     def __init__(self, value, items):
         self._value = value or ''
         self.value = self._value.lower()
-        self.value_fuzzy = StrTransformer(self._value).fuzzy
+        self.value_fuzzy = StrTransformer(self._value).fuzzy if len(self._value) > 1 else ''
 
         self._items = items if items != None else []
         self.items = None if value else items
@@ -25,9 +25,14 @@ class Search:
 
     @property
     def _value_results(self):
-        value_items = [item for item in self._items
-                       if (len(self.value) > 1 and self.value in item.description.lower()) or
-                       (len(self.value) == 1 and item.description.lower()[:1] == self.value)]
+        if len(self.value) == 1:
+            return [item for item in self._items if item.description.lower()[:1] == self.value]
+
+        value_items = []
+
+        for token in self.value.split():
+            value_items.extend([item for item in self._items if token in item.description.lower()])
+
         return value_items
 
     @property
