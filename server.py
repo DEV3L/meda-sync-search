@@ -39,7 +39,7 @@ def search():
 
 @app.route('/search_equipment', methods=['GET', 'POST'])
 def search_equipment():
-    search_response = _search('search_description', is_equipment=True)
+    search_response = _search('search_equipment', is_equipment=True)
     return _render_template('equipment.jinja', search_response)
 
 
