@@ -14,6 +14,10 @@ app = Flask(__name__)
 manager = Manager(app)
 
 
+@app.route('/')
+def index():
+    return render_template('index.jinja')
+
 @app.route('/prescriptions')
 def prescriptions():
     search_response = _search('prescriptions')
