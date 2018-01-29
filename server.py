@@ -62,12 +62,20 @@ def search_items(search_str, quantity_str, form_name, *, include_fuzzy=True, is_
     loader = _loader_factory(is_equipment)
 
     _items = loader.list
-    search = Search(search_str, _items, quantity=quantity_str)
+    search = Search(search_str, _items)
 
     if not include_fuzzy:
         search.value_fuzzy = None
 
     _items = search.results
+
+    if quantity_str:
+        quantity = int(quantity_str)
+
+        for item in _items:
+            if hasattr(item, 'cost_per_unit'):
+                quantity_cost = quantity * item.cost_per_unit
+                item.quantity_cost = f'{quantity_cost:.2f}'
 
     items_response = {
         'form_name': form_name,
