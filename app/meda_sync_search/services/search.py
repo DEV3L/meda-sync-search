@@ -4,12 +4,14 @@ from app.meda_sync_search.transformers.str_transformer import StrTransformer
 logger = LoggingService('search')
 
 class Search:
-    def __init__(self, value, items):
+    def __init__(self, value, items, *, quantity=None):
         self._value = value or ''
         logger.info(f'Search value: {value}')
 
         self.value = self._value.lower()
         self.value_fuzzy = StrTransformer(self._value).fuzzy if len(self._value) > 1 else ''
+
+        self.quantity = quantity
 
         self._items = items if items != None else []
         self.items = None if value else items
@@ -23,6 +25,9 @@ class Search:
         _items.extend(self._value_fuzzy_results)
         _items = list(set(_items))
         _items.sort(key=lambda item: item.description)
+
+        # for item in _items:
+        #     item.quantity = self.quantity * item.
 
         self.items = _items
         return self.items

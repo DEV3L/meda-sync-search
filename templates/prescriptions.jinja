@@ -4,9 +4,10 @@
     <div class="container-fluid">
         <form class="form-signin" action="{{ url_for(form_name) }}" method="post">
             <h2 class="form-signin-heading">Search Prescriptions</h2>
-            <label for="inputEmail" class="sr-only">Description</label>
             <input type="text" name="search" id="search" class="form-control"
                    placeholder="Description" autofocus value="{{ _search }}">
+            <input type="number" maxlength="3" name="quantity" id="quantity" class="form-control"
+                   placeholder="Quantity (optional)" autofocus value="{{ _quantity }}">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
         </form>
         <p class="text-muted text-center">Pricing reflects National Average Drug Acquisition Cost (NADAC) from CMS.</p>
@@ -25,13 +26,19 @@
                         <th>High Cost</th>
                         <th>Pricing Unit</th>
                         <th>Cost Per Unit</th>
+                        {% if _quantity %}
+                            <th>Quantity Cost</th>
+                        {% endif %}
                     </tr>
                     {% for prescription in data %}
                         <tr title="{{ prescription['fuzzy'] }}">
                             <td>{{ prescription['description'] }}</td>
                             <td>{{ prescription['is_high_cost'] }}</td>
                             <td>{{ prescription['pricing_unit'] }}</td>
-                            <td>{{ prescription['cost_per_unit'] }}</td>
+                            <td>${{ prescription['cost_per_unit'] }}</td>
+                            {% if _quantity %}
+                                <td>${{ prescription['quantity_cost'] }}</td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                 </table>
