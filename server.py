@@ -30,12 +30,17 @@ def equipment():
     return jsonify(search_response)
 
 
-@app.route('/search_prescription', methods=['GET', 'POST'])
+
 @app.route('/search', methods=['GET', 'POST'])
 def search():
-    search_response = _search('search_description')
+    search_response = _search('search_prescription')
     return _render_template('prescriptions.jinja', search_response)
 
+
+@app.route('/search_prescription', methods=['GET', 'POST'])
+def search_prescription():
+    search_response = _search('search_prescription')
+    return _render_template('prescriptions.jinja', search_response)
 
 @app.route('/search_equipment', methods=['GET', 'POST'])
 def search_equipment():
