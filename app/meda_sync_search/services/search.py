@@ -1,9 +1,13 @@
+from app.meda_sync_search.services.logging_service import LoggingService
 from app.meda_sync_search.transformers.str_transformer import StrTransformer
 
+logger = LoggingService('search')
 
 class Search:
     def __init__(self, value, items):
         self._value = value or ''
+        logger.info(f'Search value: {value}')
+
         self.value = self._value.lower()
         self.value_fuzzy = StrTransformer(self._value).fuzzy if len(self._value) > 1 else ''
 
